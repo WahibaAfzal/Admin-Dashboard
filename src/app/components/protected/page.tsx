@@ -1,44 +1,51 @@
+
+
+
+// "use client"
+
 // import { useRouter } from "next/navigation";
 // import { useEffect } from "react";
 
-// export default function ProtectedRoute({
-//   childern,
-// }: {
-//   childern: React.ReactNode;
-// }) {
-//   const router = useRouter();
 
-//   useEffect(() => {
-//     const isLoggedIn = localStorage.getItem("isLoggedIn");
-//     if (!isLoggedIn) {
-//       router.push("/admin");
-//     }
-//   }, [router]);
-//   return <>{childern}</>;
+// export default function ProtectedRoute({children} : {children : React.ReactNode}){
+//     const router = useRouter()
+
+//     useEffect(() => {
+//         const isLoggedIn = localStorage.getItem("isLoggedIn")
+//         if (!isLoggedIn) {
+//             router.push("/admin")
+//         }
+
+//     },[router])
+
+//     return <>
+//     {children}
+//     </>
 // }
 
 
 
 
 
-"use client"
 
-import { useRouter } from "next/navigation";
+"use client";
+
 import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 
+interface ProtectedRouteProps {
+  children: React.ReactNode;
+}
 
-export default function ProtectedRoute({children} : {children : React.ReactNode}){
-    const router = useRouter()
+export default function ProtectedRoute({ children }: ProtectedRouteProps) {
+  const router = useRouter();
 
-    useEffect(() => {
-        const isLoggedIn = localStorage.getItem("isLoggedIn")
-        if (!isLoggedIn) {
-            router.push("/admin")
-        }
+  useEffect(() => {
+    const isLoggedIn = localStorage.getItem("isLoggedIn");
+    if (!isLoggedIn) {
+      router.push("/admin");
+    }
+  }, [router]);
 
-    },[router])
-
-    return <>
-    {children}
-    </>
+  return <>{children}</>;
 }
